@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASTR 200 · Final Exam Drill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDMincho&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+:root {
+  --bg:#0d0d0f; --surface:#17171c; --surface2:#1e1e25; --border:#2a2a35;
+  --ink:#e4e4ed; --muted:#8888a0; --dim:#55556a;
+  --pink:#e84393; --pink-soft:#e8439322; --pink-glow:#e8439344;
+  --green:#00b894; --green-soft:#00b89422; --green-glow:#00b89444;
+  --purple:#a29bfe; --purple-soft:#a29bfe22; --purple-glow:#a29bfe44;
+  --red:#ff6b6b; --red-soft:#ff6b6b22;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.6 'BIZ UDMincho',serif}
+header{background:linear-gradient(135deg,#1a0a1e 0%,#0d0d1a 50%,#0a1a1e 100%);padding:20px max(20px,calc((100vw - 1240px)/2));border-bottom:1px solid var(--border)}
+header h1{margin:0 0 2px;font-size:clamp(1.2rem,2vw,1.6rem);background:linear-gradient(90deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+header p{margin:0;color:var(--muted);font-size:.9rem}
+.layout{max-width:1260px;margin:16px auto;padding:0 16px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:16px}
+.right-col{display:flex;flex-direction:column;gap:16px;min-width:0}
+aside,.card{background:var(--surface);border:1px solid var(--border);border-radius:12px}
+aside{padding:14px;height:max-content;position:sticky;top:14px}
+aside h2{margin:0 0 10px;font-size:.95rem;color:var(--purple)}
+#nav{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;max-height:52vh;overflow:auto;padding-right:2px}
+#nav::-webkit-scrollbar{width:4px}
+#nav::-webkit-scrollbar-thumb{background:var(--border);border-radius:9px}
+button{font:inherit;cursor:pointer}
+.nav-btn{border:1px solid var(--border);background:var(--surface2);color:var(--muted);border-radius:6px;padding:6px 2px;font-size:.78rem;transition:.15s}
+.nav-btn:hover{border-color:var(--pink);color:var(--ink)}
+.nav-btn.current{border-color:var(--pink);box-shadow:0 0 8px var(--pink-glow);color:var(--pink)}
+.nav-btn.correct{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.nav-btn.missed{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.nav-btn.attempted{box-shadow:inset 0 -2px var(--dim)}
+.legend{color:var(--dim);font-size:.78rem;margin:10px 0 0}
+.legend span{display:inline-block;margin-right:8px}
+.stats{border-top:1px solid var(--border);margin-top:12px;padding-top:12px;color:var(--muted);font-size:.84rem}
+.stats strong{color:var(--ink)}
+.stat-line{display:flex;justify-content:space-between;gap:6px;margin:3px 0}
+.progress{height:6px;background:var(--surface2);border-radius:99px;overflow:hidden;margin:6px 0 10px}
+.progress>span{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--purple));width:0;transition:width .4s}
+.side-actions{display:grid;gap:6px;margin-top:10px}
+.order-control{display:grid;gap:4px;color:var(--muted);font-size:.82rem;margin-top:12px}
+.order-control select{width:100%;border:1px solid var(--border);border-radius:6px;background:var(--surface2);color:var(--ink);padding:7px;font:inherit}
+/* Filters */
+.filter-section{border-top:1px solid var(--border);margin-top:12px;padding-top:12px}
+.filter-section h3{margin:0 0 6px;font-size:.82rem;color:var(--pink)}
+.filter-select{width:100%;border:1px solid var(--border);border-radius:6px;background:var(--surface2);color:var(--ink);padding:6px 7px;font:inherit;font-size:.82rem;margin-bottom:5px}
+.filter-select:focus{outline:none;border-color:var(--pink)}
+.clear-filters{border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:5px;padding:4px 10px;font-size:.78rem;margin-top:2px}
+.clear-filters:hover{border-color:var(--pink);color:var(--pink)}
+.active-filter{color:var(--pink);font-size:.78rem;margin:2px 0}
+/* Subtopic/topic breakdown bar */
+.topic-bar{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px}
+.topic-bar h3{margin:0 0 8px;font-size:.88rem;color:var(--purple)}
+.sub-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);font-size:.82rem;cursor:pointer;transition:.15s}
+.sub-row:last-child{border-bottom:none}
+.sub-row:hover{color:var(--pink)}
+.sub-row .sub-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sub-row .sub-count{color:var(--muted);white-space:nowrap}
+.sub-row .sub-epoch{color:var(--dim);font-size:.75rem;white-space:nowrap;min-width:24px}
+.sub-row .sub-rate{white-space:nowrap;min-width:50px;text-align:right}
+.sub-reset{border:1px solid var(--border);background:transparent;color:var(--dim);border-radius:4px;padding:1px 6px;font-size:.7rem;cursor:pointer;transition:.15s;flex-shrink:0}
+.sub-reset:hover{border-color:var(--red);color:var(--red)}
+/* Card */
+.card{padding:clamp(16px,3vw,28px)}
+.meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:.85rem;margin-bottom:14px;flex-wrap:wrap}
+.tag{border-radius:999px;padding:2px 10px;font-weight:700;font-size:.82rem}
+.tag-mcq{background:var(--pink-soft);color:var(--pink)}
+.tag-frq{background:var(--purple-soft);color:var(--purple)}
+.epoch-tag{background:var(--green-soft);color:var(--green);border-radius:999px;padding:2px 9px;font-size:.78rem;margin-right:4px}
+.freq-tag{background:var(--purple-soft);color:var(--purple);border-radius:999px;padding:2px 8px;font-size:.72rem;margin-left:4px}
+h2{line-height:1.4;margin:0 0 18px;font-size:clamp(1.1rem,2vw,1.35rem)}
+.q-image{max-width:100%;border-radius:8px;border:1px solid var(--border);margin-bottom:14px}
+.choices{display:grid;gap:8px}
+.choice{text-align:left;width:100%;border:1px solid var(--border);background:var(--surface2);color:var(--ink);border-radius:8px;padding:11px 13px;transition:.15s}
+.choice:hover:not(:disabled){border-color:var(--pink);background:#1f1525}
+.choice:disabled{cursor:default}
+.choice.correct{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.choice.wrong{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+textarea{width:100%;min-height:110px;resize:vertical;border:1px solid var(--border);border-radius:8px;padding:11px;font:inherit;background:var(--surface2);color:var(--ink)}
+textarea:focus{outline:none;border-color:var(--pink);box-shadow:0 0 8px var(--pink-glow)}
+.submit,.primary{margin-top:10px;border:0;border-radius:7px;padding:9px 15px;color:#fff;background:var(--pink);font-weight:700;transition:.15s}
+.submit:hover,.primary:hover{box-shadow:0 0 16px var(--pink-glow)}
+.feedback{margin-top:14px;padding:12px 14px;border-radius:8px;background:var(--surface2);border-left:3px solid var(--purple)}
+.feedback.good{border-left-color:var(--green)}
+.feedback.bad{border-left-color:var(--red)}
+.answer{margin-top:8px;white-space:pre-wrap}
+.answer strong{color:var(--ink)}
+.answer table,.card table{border-collapse:collapse;margin:12px 0;font-size:.88rem;width:auto;min-width:50%}
+.answer th,.answer td,.card table th,.card table td{border:1px solid var(--dim);padding:7px 12px;text-align:left;line-height:1.4}
+.answer th,.card table th{background:var(--surface2);color:var(--purple);font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.02em;border-bottom:2px solid var(--purple)}
+.answer td,.card table td{background:var(--surface)}
+.answer tr:hover td,.card table tr:hover td{background:var(--surface2)}
+.card table{border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.actions{display:flex;justify-content:space-between;gap:8px;margin-top:18px;flex-wrap:wrap}
+.secondary{border:1px solid var(--border);background:var(--surface2);color:var(--ink);border-radius:7px;padding:8px 12px;transition:.15s}
+.secondary:hover{border-color:var(--purple)}
+.secondary:disabled{opacity:.35;cursor:default}
+.finish{text-align:center}
+.finish h2{margin-bottom:6px}
+.finish p{color:var(--muted)}
+.finish button{margin:5px}
+.small{color:var(--muted);font-size:.8rem}
+.danger{color:var(--red);border-color:#ff6b6b55}
+.danger:hover{border-color:var(--red)}
+/* Coverage view */
+.coverage-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.cov-tabs{display:flex;gap:4px;margin:14px 0}
+.cov-tab{border:1px solid var(--border);background:var(--surface2);color:var(--muted);border-radius:6px;padding:6px 12px;font-size:.84rem}
+.cov-tab.active{border-color:var(--pink);color:var(--pink);background:var(--pink-soft)}
+.cov-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px}
+.cov-table th,.cov-table td{text-align:left;border-bottom:1px solid var(--border);padding:8px 6px;vertical-align:top}
+.cov-table th{color:var(--dim);font-size:.76rem;text-transform:uppercase;letter-spacing:.03em}
+.cov-table .num{text-align:right;white-space:nowrap}
+.cov-table tr.unattempted{color:var(--dim)}
+.cov-table button{border:0;background:none;color:var(--pink);padding:0;text-align:left;font:inherit}
+.cov-table button:hover{text-decoration:underline}
+.bar{display:inline-block;height:8px;border-radius:4px;min-width:2px}
+.bar-good{background:var(--green)}
+.bar-mid{background:var(--purple)}
+.bar-bad{background:var(--red)}
+.bar-none{background:var(--dim)}
+.rate-cell{display:flex;align-items:center;gap:6px}
+@media(max-width:760px){
+  .layout{display:block;margin-top:10px}
+  aside{position:static;margin-bottom:10px}
+  #nav{max-height:160px;grid-template-columns:repeat(10,1fr)}
+  .card{padding:14px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>ASTR 200 · Final Exam Drill</h1>
+  <p>Topics 1–25 — Past midterm questions across M1, M2, M3</p>
+</header>
+<div class="layout">
+  <aside>
+    <h2>Navigator</h2>
+    <div id="nav"></div>
+    <div class="legend"><span>□ unseen</span> <span style="color:var(--green)">■ correct</span> <span style="color:var(--red)">■ missed</span></div>
+    <label class="order-control">Order
+      <select id="orderSelect" onchange="setOrder(this.value)">
+        <option value="priority">Priority: unseen, then weak</option>
+        <option value="weakest">Lowest hit rate first</option>
+        <option value="frequency">Most repeated first</option>
+        <option value="source">Source order</option>
+        <option value="topic">Group by topic</option>
+      </select>
+    </label>
+    <div class="filter-section" id="filters"></div>
+    <div class="stats" id="stats"></div>
+    <div class="side-actions">
+      <button class="secondary" onclick="showCoverage()">Coverage details</button>
+      <button class="secondary danger" onclick="resetStats()">Reset statistics</button>
+    </div>
+  </aside>
+  <div class="right-col">
+    <main id="app"></main>
+    <div id="topic-bar" class="topic-bar"></div>
+  </div>
+</div>
+<script src="astr200_quiz_data.js"></script>
+<script>
+const allQuestions = window.ASTR200_QUIZ_DATA || [];
+const STORAGE_KEY = 'astr200-drill-stats-v1';
+const ORDER_KEY = 'astr200-drill-order-v1';
+const FILTER_KEY = 'astr200-drill-filter-v1';
+let index = 0, view = 'quiz', runGen = 0, advTimer = null;
+let sessionState = new Map(), submitted = new Map();
+let stats = loadStats();
+let orderMode = localStorage.getItem(ORDER_KEY) || 'priority';
+let covTab = 'question';
+
+// ═══ Topic map for ordering ═══
+const TOPIC_MAP = {
+  1:'A Universe of Life?',2:'A Quick Look at the Night Sky',3:'A Brief History of Astronomy',
+  4:'The Scientific Revolution',5:'Matter, Light, and Telescopes',6:'Telescopes',
+  7:'A Tour of the Solar System',8:'Formation of the Solar System',9:'Age of the Solar System',
+  10:'Birth of the Universe',11:'The Habitability of Earth',12:'Climate Change',
+  13:'Life on Earth',14:'Origin & Evolution of Life on Earth',15:'Searching for Life in the Solar System',
+  16:'Mars',17:'The Sun and Space Weather',18:'Surveying the Sun and Stars',
+  19:'The Life Cycle of Stars',20:'Extrasolar Planetary Systems',
+  21:'Nature & Evolution of Habitability',22:'Search for Extraterrestrial Intelligence',
+  23:'Interstellar Travel',24:'Aliens!',25:'The Fermi Paradox'
+};
+
+// ═══ Filters ═══
+let filters = loadFilters();
+function loadFilters(){try{return JSON.parse(localStorage.getItem(FILTER_KEY)||'{}')}catch(_){return{}}}
+function saveFilters(){localStorage.setItem(FILTER_KEY,JSON.stringify(filters))}
+function filteredQ(){
+  return allQuestions.filter(q=>{
+    if(q.duplicateOf) return false;
+    if(filters.epoch && q.epoch!==filters.epoch) return false;
+    if(filters.topicNum && q.topicNum!==Number(filters.topicNum)) return false;
+    if(filters.type && q.type!==filters.type) return false;
+    if(filters.sourceExam && !(q.sourceExams||[]).includes(filters.sourceExam)) return false;
+    if(filters.hasImage==='yes' && !q.hasImage) return false;
+    if(filters.hasImage==='no' && q.hasImage) return false;
+    return true;
+  });
+}
+let questions = sortQ(filteredQ());
+
+function uniqueEpochs(){return [...new Set(allQuestions.map(q=>q.epoch))].sort()}
+function uniqueTopicNums(epoch){
+  const pool = epoch ? allQuestions.filter(q=>q.epoch===epoch) : allQuestions;
+  return [...new Set(pool.map(q=>q.topicNum))].sort((a,b)=>a-b);
+}
+function uniqueSourceExams(){
+  const exams = new Set();
+  allQuestions.forEach(q=>(q.sourceExams||[]).forEach(e=>exams.add(e)));
+  return [...exams].sort();
+}
+
+const app = document.getElementById('app');
+const nav = document.getElementById('nav');
+const statsEl = document.getElementById('stats');
+
+// ═══ Stats ═══
+function loadStats(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(_){return{}}}
+function saveStats(){localStorage.setItem(STORAGE_KEY,JSON.stringify(stats))}
+function sf(id){return stats[id]||{attempts:0,correct:0,incorrect:0}}
+function acc(s){return s.attempts?Math.round(s.correct/s.attempts*100):null}
+function smooth(q){const s=sf(q.id);return(s.correct+1)/(s.attempts+2)}
+function priority(q){return 1-smooth(q)}
+
+// ═══ Sorting ═══
+function sortQ(src){
+  const s=src.slice();
+  if(orderMode==='source') return s;
+  if(orderMode==='topic') return s.sort((a,b)=>a.topicNum-b.topicNum||a.id.localeCompare(b.id));
+  if(orderMode==='frequency') return s.sort((a,b)=>(b.frequency||0)-(a.frequency||0)||a.id.localeCompare(b.id));
+  if(orderMode==='weakest') return s.sort((a,b)=>{
+    const ar=sf(a.id).attempts?smooth(a):-1, br=sf(b.id).attempts?smooth(b):-1;
+    return ar-br||a.id.localeCompare(b.id);
+  });
+  // priority: unseen first, then weakest
+  return s.sort((a,b)=>{
+    const au=!sf(a.id).attempts, bu=!sf(b.id).attempts;
+    if(au!==bu) return au?-1:1;
+    if(au) return (b.frequency||0)-(a.frequency||0)||a.id.localeCompare(b.id);
+    return priority(b)-priority(a);
+  });
+}
+function setOrder(m){cancelAdv();orderMode=m;localStorage.setItem(ORDER_KEY,m);const cid=questions[index]?.id;questions=sortQ(filteredQ());const ni=questions.findIndex(q=>q.id===cid);if(ni>=0)index=ni;render()}
+function applyFilter(key,val){
+  cancelAdv();
+  if(val){filters[key]=val}else{delete filters[key]}
+  if(key==='epoch'){delete filters.topicNum}
+  saveFilters();
+  questions=sortQ(filteredQ());
+  index=0;sessionState=new Map();submitted=new Map();
+  render();
+}
+function clearAllFilters(){filters={};saveFilters();questions=sortQ(filteredQ());index=0;sessionState=new Map();submitted=new Map();render()}
+function record(q,ok){const c=sf(q.id);c.attempts+=1;c[ok?'correct':'incorrect']+=1;stats[q.id]=c;saveStats()}
+function totals(pool){return (pool||questions).reduce((o,q)=>{const s=sf(q.id);o.attempts+=s.attempts;o.correct+=s.correct;o.incorrect+=s.incorrect;if(s.attempts)o.attempted+=1;return o},{attempted:0,attempts:0,correct:0,incorrect:0})}
+
+// ═══ Rendering helpers ═══
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+function md2html(text){
+  if(!text) return '';
+  let h = esc(text);
+  // tables
+  h = h.replace(/^(\|.+\|)\n(\|[\-\|: ]+\|)\n((?:\|.+\|\n?)+)/gm, (_, hdr, sep, body) => {
+    const cells = r => r.split('|').slice(1,-1).map(c=>c.trim());
+    const ths = cells(hdr).map(c=>'<th>'+c+'</th>').join('');
+    const rows = body.trim().split('\n').map(r=>'<tr>'+cells(r).map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('');
+    return '<table><thead><tr>'+ths+'</tr></thead><tbody>'+rows+'</tbody></table>';
+  });
+  h = h.replace(/\n/g,'<br>');
+  return h;
+}
+
+function renderKatex(el){
+  if(typeof renderMathInElement==='function'){
+    renderMathInElement(el,{delimiters:[
+      {left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}
+    ],throwOnError:false});
+  }
+}
+
+// ═══ Nav ═══
+function renderNav(){
+  nav.innerHTML=questions.map((q,i)=>{
+    const ss=sessionState.get(q.id), saved=sf(q.id).attempts>0;
+    return `<button class="nav-btn ${i===index&&view==='quiz'?'current ':''}${ss==='correct'?'correct ':''}${ss==='missed'?'missed ':''}${saved?'attempted':''}" onclick="go(${i})">${i+1}</button>`;
+  }).join('');
+}
+
+// ═══ Filters panel ═══
+function renderFilters(){
+  const fe=filters.epoch||'', ft=filters.topicNum||'', fy=filters.type||'', fx=filters.sourceExam||'', fi=filters.hasImage||'';
+  const epochs=uniqueEpochs(), topicNums=uniqueTopicNums(fe||undefined), exams=uniqueSourceExams();
+  const hasFilter=fe||ft||fy||fx||fi;
+  const filtersEl=document.getElementById('filters');
+  filtersEl.innerHTML=`<h3>Filter${hasFilter?' <button class="clear-filters" onclick="clearAllFilters()">✕ Clear</button>':''}</h3>
+    <select class="filter-select" onchange="applyFilter('epoch',this.value)">
+      <option value="">All epochs</option>
+      ${epochs.map(e=>`<option value="${esc(e)}"${e===fe?' selected':''}>${esc(e)}</option>`).join('')}
+    </select>
+    <select class="filter-select" onchange="applyFilter('topicNum',this.value)">
+      <option value="">All topics</option>
+      ${topicNums.map(n=>`<option value="${n}"${String(n)===String(ft)?' selected':''}>${n}. ${esc(TOPIC_MAP[n]||'Topic '+n)}</option>`).join('')}
+    </select>
+    <select class="filter-select" onchange="applyFilter('type',this.value)">
+      <option value="">MCQ + FRQ</option>
+      <option value="mcq"${fy==='mcq'?' selected':''}>MCQ only</option>
+      <option value="frq"${fy==='frq'?' selected':''}>FRQ only</option>
+    </select>
+    <select class="filter-select" onchange="applyFilter('sourceExam',this.value)">
+      <option value="">All source exams</option>
+      ${exams.map(e=>`<option value="${esc(e)}"${e===fx?' selected':''}>${esc(e)}</option>`).join('')}
+    </select>
+    <select class="filter-select" onchange="applyFilter('hasImage',this.value)">
+      <option value="">All (image/text)</option>
+      <option value="yes"${fi==='yes'?' selected':''}>Image questions only</option>
+      <option value="no"${fi==='no'?' selected':''}>Text-only questions</option>
+    </select>
+    ${hasFilter?`<div class="active-filter">Showing ${questions.length} of ${allQuestions.length} questions</div>`:''}`;
+}
+
+// ═══ Stats panel ═══
+function renderStats(){
+  const t=totals(), total=questions.length, cov=total?Math.round(t.attempted/total*100):0, ovr=t.attempts?Math.round(t.correct/t.attempts*100):0;
+  document.getElementById('orderSelect').value=orderMode;
+  statsEl.innerHTML=`<div class="stat-line"><span>Questions</span><strong>${total}</strong></div>
+    <div class="stat-line"><span>Coverage</span><strong>${t.attempted}/${total} (${cov}%)</strong></div>
+    <div class="progress"><span style="width:${cov}%"></span></div>
+    <div class="stat-line"><span>Attempts</span><strong>${t.attempts}</strong></div>
+    <div class="stat-line"><span>Accuracy</span><strong>${t.attempts?ovr+'%':'—'}</strong></div>
+    <div class="small">Saved in browser localStorage.</div>`;
+}
+
+// ═══ Auto-advance ═══
+function cancelAdv(){runGen++;if(advTimer!==null){clearTimeout(advTimer);advTimer=null}}
+function go(i){cancelAdv();view='quiz';index=Math.max(0,Math.min(i,questions.length-1));render()}
+
+// ═══ Main render ═══
+function render(){
+  renderNav();renderFilters();renderStats();renderTopicBar();
+  if(view==='coverage'){renderCoverage();return}
+  if(view==='finish'){renderFinish();return}
+  const q=questions[index];
+  if(!q){renderFinish();return}
+  const done=submitted.get(q.id);
+  const saved=done?.value||'';
+  const freqLabel=q.frequency>1?`<span class="freq-tag">×${q.frequency}</span>`:'';
+  const imgHtml=q.hasImage&&q.image?`<img class="q-image" src="${esc(q.image)}" alt="Question diagram">`:'';
+  app.innerHTML=`<section class="card">
+    <div class="meta">
+      <span><span class="epoch-tag">${esc(q.epoch)}</span> T${q.topicNum}: ${esc(q.topicName)}${freqLabel}</span>
+      <span class="tag ${q.type==='mcq'?'tag-mcq':'tag-frq'}">${q.type==='mcq'?'MCQ':'FRQ'}</span>
+    </div>
+    ${imgHtml}
+    <h2>Q${index+1}. ${md2html(q.question)}</h2>
+    ${q.type==='mcq'?renderChoices(q,done):renderFrq(q,done,saved)}
+    <div style="margin-top:10px;color:var(--dim);font-size:.78rem">
+      ${esc(q.id)} · Source: ${(q.sourceExams||[]).join(', ')}
+    </div>
+    <div class="actions">
+      <button class="secondary" ${index===0?'disabled':''} onclick="go(${index-1})">← Prev</button>
+      <span class="small">${index+1} / ${questions.length}</span>
+      <button class="secondary" onclick="${index===questions.length-1?'finish()':'go('+(index+1)+')'}">${index===questions.length-1?'Finish →':'Next →'}</button>
+    </div>
+  </section>`;
+  renderKatex(app);
+}
+
+function renderChoices(q,done){
+  const letters='ABCDEFGH';
+  return `<div class="choices">${q.choices.map((c,i)=>{
+    const letter=letters[i];
+    const selected=done?.choiceIdx===i;
+    const isCorrect=letter===q.correctChoice;
+    return `<button class="choice ${selected?(done.correct?'correct':'wrong'):''}${done&&isCorrect&&!selected?' correct':''}" ${done?'disabled':''} onclick="answerMCQ(${i})">${letter}. ${esc(c)}</button>`;
+  }).join('')}</div>${done?feedback(q,done):''}`;
+}
+function renderFrq(q,done,saved){
+  if(!done) return `<textarea id="frq" placeholder="Work it out, then reveal…"></textarea><button class="submit" onclick="answerFRQ()">Reveal answer</button>`;
+  const rating=done.rated?`<div class="feedback ${done.correct?'good':'bad'}"><strong>${done.correct?'Recorded correct':'Recorded missed'}</strong><div class="answer">${md2html(q.answer)}</div></div>`:`<div class="feedback"><strong>Self-check</strong><div class="answer">${md2html(q.answer)}</div><div style="margin-top:10px"><button class="primary" onclick="rateFRQ(true)">Got it ✓</button> <button class="secondary" onclick="rateFRQ(false)" style="margin-left:6px">Missed ✗</button></div></div>`;
+  return `<textarea id="frq" disabled>${esc(saved)}</textarea>${rating}`;
+}
+function feedback(q,done){
+  return `<div class="feedback ${done.correct?'good':'bad'}"><strong>${done.correct?'Correct':'Not quite'}</strong><div class="answer">${md2html(q.answer)}</div></div>`;
+}
+function schedAdv(q){if(advTimer!==null)clearTimeout(advTimer);const g=runGen;advTimer=setTimeout(()=>{advTimer=null;if(g!==runGen||view!=='quiz'||questions[index]?.id!==q.id)return;if(questions.every(q2=>submitted.has(q2.id))){finish();return}if(index<questions.length-1){index++;render()}else finish()},600)}
+function answerMCQ(ci){const q=questions[index];if(submitted.has(q.id))return;const letters='ABCDEFGH';const ok=letters[ci]===q.correctChoice;submitted.set(q.id,{choiceIdx:ci,correct:ok});sessionState.set(q.id,ok?'correct':'missed');record(q,ok);render();renderKatex(app);if(ok)schedAdv(q)}
+function answerFRQ(){const inp=document.getElementById('frq');const q=questions[index];if(!inp||submitted.has(q.id))return;submitted.set(q.id,{value:inp.value,rated:false});render();renderKatex(app)}
+function rateFRQ(ok){const q=questions[index];const d=submitted.get(q.id);if(!d||d.rated)return;d.rated=true;d.correct=ok;sessionState.set(q.id,ok?'correct':'missed');record(q,ok);render();renderKatex(app);if(ok)schedAdv(q)}
+function finish(){view='finish';renderFinish();renderNav()}
+function renderFinish(){const t=totals();app.innerHTML=`<section class="card finish"><h2>Session summary</h2><p>${t.attempted}/${questions.length} unique questions seen. ${t.correct} correct, ${t.incorrect} missed.</p><button class="primary" onclick="showCoverage()">Coverage details</button> <button class="secondary" onclick="fullRetake()">Full retake</button> ${[...sessionState.values()].includes('missed')?'<button class="secondary" onclick="retakeMissed()">Retake missed</button>':''}</section>`}
+function fullRetake(){cancelAdv();questions=sortQ(filteredQ());index=0;sessionState=new Map();submitted=new Map();view='quiz';render()}
+function retakeMissed(){cancelAdv();const keep=questions.filter(q=>sessionState.get(q.id)==='missed');questions=sortQ(keep);index=0;sessionState=new Map();submitted=new Map();view='quiz';render()}
+function resetStats(){if(!confirm('Reset all ASTR 200 drill statistics?'))return;cancelAdv();stats={};saveStats();render()}
+
+// ═══ Coverage views ═══
+function showCoverage(){view='coverage';render()}
+function rateBar(pct,w){
+  if(pct===null) return `<span class="bar bar-none" style="width:${w}px"></span>`;
+  const cls=pct>=70?'bar-good':pct>=40?'bar-mid':'bar-bad';
+  return `<span class="bar ${cls}" style="width:${Math.max(2,Math.round(pct/100*w))}px"></span>`;
+}
+function renderCoverage(){
+  const tabs = ['question','topic','epoch'];
+  const tabHtml = tabs.map(t=>`<button class="cov-tab ${covTab===t?'active':''}" onclick="covTab='${t}';renderCoverage()">${t[0].toUpperCase()+t.slice(1)}s</button>`).join('');
+  let tableHtml='';
+  if(covTab==='question'){
+    tableHtml=`<table class="cov-table"><thead><tr><th>Question</th><th>Topic</th><th class="num">Freq</th><th class="num">Att</th><th class="num">✓</th><th class="num">✗</th><th class="num">Rate</th></tr></thead><tbody>${allQuestions.map((q,i)=>{
+      const s=sf(q.id),p=acc(s),cls=s.attempts?'':'unattempted';
+      return `<tr class="${cls}"><td><button onclick="goById('${esc(q.id)}')">${i+1}. ${esc(q.question.slice(0,70))}${q.question.length>70?'…':''}</button><div class="small">${esc(q.type)} · ${esc(q.id)}</div></td><td class="small">T${q.topicNum}</td><td class="num">${q.frequency||1}</td><td class="num">${s.attempts}</td><td class="num">${s.correct}</td><td class="num">${s.incorrect}</td><td class="num"><div class="rate-cell">${rateBar(p,40)} ${p===null?'—':p+'%'}</div></td></tr>`;
+    }).join('')}</tbody></table>`;
+  } else if(covTab==='topic'){
+    const topMap = new Map();
+    allQuestions.forEach(q=>{
+      const k=q.topicNum;
+      if(!topMap.has(k)) topMap.set(k,{num:k,name:q.topicName||TOPIC_MAP[k]||'Topic '+k,epoch:q.epoch,qids:[]});
+      topMap.get(k).qids.push(q.id);
+    });
+    const tops=[...topMap.values()].sort((a,b)=>a.num-b.num);
+    tableHtml=`<table class="cov-table"><thead><tr><th>Topic</th><th>Epoch</th><th class="num">Qs</th><th class="num">Att</th><th class="num">✓</th><th class="num">Rate</th></tr></thead><tbody>${tops.map(t=>{
+      const agg=t.qids.reduce((o,id)=>{const s=sf(id);o.att+=s.attempts;o.cor+=s.correct;return o},{att:0,cor:0});
+      const p=agg.att?Math.round(agg.cor/agg.att*100):null;
+      return `<tr class="${agg.att?'':'unattempted'}"><td><strong>T${t.num}. ${esc(t.name)}</strong></td><td>${esc(t.epoch)}</td><td class="num">${t.qids.length}</td><td class="num">${agg.att}</td><td class="num">${agg.cor}</td><td class="num"><div class="rate-cell">${rateBar(p,50)} ${p===null?'—':p+'%'}</div></td></tr>`;
+    }).join('')}</tbody></table>`;
+  } else {
+    const eMap = new Map();
+    allQuestions.forEach(q=>{
+      if(!eMap.has(q.epoch)) eMap.set(q.epoch,{epoch:q.epoch,qids:[]});
+      eMap.get(q.epoch).qids.push(q.id);
+    });
+    const eps=[...eMap.values()].sort((a,b)=>a.epoch.localeCompare(b.epoch));
+    tableHtml=`<table class="cov-table"><thead><tr><th>Epoch</th><th class="num">Qs</th><th class="num">Att</th><th class="num">✓</th><th class="num">Rate</th></tr></thead><tbody>${eps.map(e=>{
+      const agg=e.qids.reduce((o,id)=>{const s=sf(id);o.att+=s.attempts;o.cor+=s.correct;return o},{att:0,cor:0});
+      const p=agg.att?Math.round(agg.cor/agg.att*100):null;
+      return `<tr class="${agg.att?'':'unattempted'}"><td><strong>${esc(e.epoch)}</strong></td><td class="num">${e.qids.length}</td><td class="num">${agg.att}</td><td class="num">${agg.cor}</td><td class="num"><div class="rate-cell">${rateBar(p,50)} ${p===null?'—':p+'%'}</div></td></tr>`;
+    }).join('')}</tbody></table>`;
+  }
+  app.innerHTML=`<section class="card"><div class="coverage-head"><div><h2>Coverage</h2><p class="small">Hit rates persist in localStorage across sessions.</p></div><button class="secondary" onclick="view='quiz';render()">Back to drill</button></div><div class="cov-tabs">${tabHtml}</div>${tableHtml}</section>`;
+}
+function goById(id){const f=questions.findIndex(q=>q.id===id);if(f>=0)go(f)}
+
+// ═══ Topic breakdown bar ═══
+function resetTopic(num){
+  const qids=allQuestions.filter(q=>q.topicNum===num).map(q=>q.id);
+  if(!qids.length)return;
+  if(!confirm('Reset stats for Topic '+num+'? ('+qids.length+' questions)'))return;
+  qids.forEach(id=>{delete stats[id]});
+  saveStats();
+  qids.forEach(id=>{sessionState.delete(id);submitted.delete(id)});
+  render();
+}
+function filterToTopic(num){
+  cancelAdv();
+  filters.topicNum=String(num);delete filters.sourceExam;
+  saveFilters();
+  questions=sortQ(filteredQ());
+  index=0;sessionState=new Map();submitted=new Map();
+  render();
+}
+function renderTopicBar(){
+  const el=document.getElementById('topic-bar');
+  if(!el)return;
+  if(view!=='quiz'){el.style.display='none';return}
+  el.style.display='';
+  const tMap=new Map();
+  allQuestions.forEach(q=>{
+    const k=q.topicNum;
+    if(!tMap.has(k)) tMap.set(k,{num:k,name:q.topicName||TOPIC_MAP[k]||'Topic '+k,epoch:q.epoch,qids:[]});
+    tMap.get(k).qids.push(q.id);
+  });
+  const tops=[...tMap.values()].sort((a,b)=>a.num-b.num);
+  el.innerHTML=`<h3>Topic breakdown</h3>${tops.map(t=>{
+    const agg=t.qids.reduce((o,id)=>{const st=sf(id);o.att+=st.attempts;o.cor+=st.correct;return o},{att:0,cor:0});
+    const p=agg.att?Math.round(agg.cor/agg.att*100):null;
+    const rateStr=p===null?'<span style="color:var(--dim)">—</span>':(p>=70?'<span style="color:var(--green)">'+p+'%</span>':p>=40?'<span style="color:var(--purple)">'+p+'%</span>':'<span style="color:var(--red)">'+p+'%</span>');
+    const inFilter=String(filters.topicNum)===String(t.num);
+    return `<div class="sub-row" onclick="filterToTopic(${t.num})" title="Filter to Topic ${t.num}">
+      <span class="sub-epoch">${esc(t.epoch)}</span>
+      <span class="sub-name"${inFilter?' style="color:var(--pink);font-weight:700"':''}>T${t.num}. ${esc(t.name)}</span>
+      <span class="sub-count">${t.qids.length}q</span>
+      <span class="sub-rate">${rateStr}</span>
+      ${agg.att?`<button class="sub-reset" onclick="event.stopPropagation();resetTopic(${t.num})">↺</button>`:''}
+    </div>`;
+  }).join('')}`;
+}
+
+// ═══ Keyboard ═══
+document.addEventListener('keydown',e=>{
+  const a=document.activeElement;
+  const typing=a&&(a.tagName==='TEXTAREA'||a.tagName==='INPUT'||a.isContentEditable);
+  if(e.key==='Enter'&&a?.id==='frq'&&!e.shiftKey){e.preventDefault();answerFRQ();return}
+  if(typing||view!=='quiz')return;
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();go(index-1);return}
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();go(index+1);return}
+  if(/^[1-9]$/.test(e.key)){const q=questions[index];const ci=Number(e.key)-1;if(q?.type==='mcq'&&!submitted.has(q.id)&&q.choices[ci]){e.preventDefault();answerMCQ(ci)}}
+});
+
+document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>render(),100)});
+render();
+</script>
+</body>
+</html>
