@@ -25667,12 +25667,12 @@ window.ASTR200_QUIZ_DATA = [
     "question": "The atmosphere of Mars is made mostly of",
     "choices": [
       "nitrogen",
-      "arbon dioxide",
+      "carbon dioxide",
       "hydrocarbons",
-      "mmonia"
+      "ammonia"
     ],
     "correctChoice": "B",
-    "answer": "arbon dioxide",
+    "answer": "carbon dioxide",
     "image": null,
     "hasImage": false,
     "imageDescription": null,
@@ -25870,7 +25870,7 @@ window.ASTR200_QUIZ_DATA = [
       "mass",
       "luminosity",
       "surface temperature",
-      "ore temperature",
+      "core temperature",
       "radius"
     ],
     "correctChoice": "C",
@@ -25947,7 +25947,7 @@ window.ASTR200_QUIZ_DATA = [
       "the more heavy elements it contains",
       "the more planets it has around it",
       "the faster it evolves",
-      "the slower it evolves Use the H-R diagram on the right to answer questions 55 — 57."
+      "the slower it evolves"
     ],
     "correctChoice": "C",
     "answer": "the faster it evolves",
@@ -26047,7 +26047,7 @@ window.ASTR200_QUIZ_DATA = [
       "gravitational lensing",
       "Doppler technique",
       "transit technique",
-      "strometric technique"
+      "astrometric technique"
     ],
     "correctChoice": "C",
     "answer": "transit technique",
@@ -26146,11 +26146,11 @@ window.ASTR200_QUIZ_DATA = [
     "choices": [
       "it is the easiest radio frequency to generate",
       "it is the only radio frequency that is not blocked by interstellar matter",
-      "ll intelligent civilizations should be aware of its universal significance and would probably also think of sending and receiving signals at this frequency",
+      "all intelligent civilizations should be aware of its universal significance and would probably also think of sending and receiving signals at this frequency",
       "it is the only frequency to which radio telescopes can be tuned"
     ],
     "correctChoice": "C",
-    "answer": "ll intelligent civilizations should be aware of its universal significance and would probably also think of sending and receiving signals at this frequency",
+    "answer": "all intelligent civilizations should be aware of its universal significance and would probably also think of sending and receiving signals at this frequency",
     "image": null,
     "hasImage": false,
     "imageDescription": null,
@@ -26245,7 +26245,7 @@ window.ASTR200_QUIZ_DATA = [
     "question": "The main problem with early attempts to listen for radio signals from space was",
     "choices": [
       "that they were conducted at relatively low frequencies which have problems penetrating the Earth's upper atmosphere",
-      "uilding receivers sensitive enough to detect extraterrestrial signals",
+      "building receivers sensitive enough to detect extraterrestrial signals",
       "that they were conducted at relatively high frequencies which have problems penetrating the Earth's lower atmosphere",
       "interference by radio waves from the Sun"
     ],
@@ -26272,10 +26272,10 @@ window.ASTR200_QUIZ_DATA = [
       "solar sails",
       "nuclear rockets",
       "ion engines",
-      "hemical rockets"
+      "chemical rockets"
     ],
     "correctChoice": "D",
-    "answer": "hemical rockets",
+    "answer": "chemical rockets",
     "image": null,
     "hasImage": false,
     "imageDescription": null
@@ -26424,7 +26424,7 @@ window.ASTR200_QUIZ_DATA = [
     "topicNum": 19,
     "topicName": "Life Cycle of Stars",
     "type": "frq",
-    "question": "The CNO cycle is a type of hydrogen fusion that uses carbon, nitrogen, and oxygen atoms as catalysts.",
+    "question": "The ______ is a type of hydrogen fusion that uses carbon, nitrogen, and oxygen atoms as catalysts.",
     "choices": null,
     "correctChoice": null,
     "answer": "CNO cycle",
@@ -27647,7 +27647,7 @@ window.ASTR200_QUIZ_DATA = [
     "choices": [
       "It is the only composite volcano on Mars.",
       "It is the largest volcano in the Solar System.",
-      "Itis the only impact crater remaining on Mars.",
+      "It is the only impact crater remaining on Mars.",
       "It is the largest crater in the Solar System"
     ],
     "correctChoice": "B",
@@ -27746,14 +27746,14 @@ window.ASTR200_QUIZ_DATA = [
     "type": "mcq",
     "question": "Imagine that you are trying to stop neutrinos with a lead shield. How thick would you need to make this shield to ensure that it can stop an average neutrino?",
     "choices": [
-      "bout one meter",
-      "bout 700,000 kilometers (the radius of the Sun)",
-      "bout 150 million kilometers (the size of an astronomical unit)",
-      "bout one light-year",
-      "bout a thousand light-years"
+      "about one meter",
+      "about 700,000 kilometers (the radius of the Sun)",
+      "about 150 million kilometers (the size of an astronomical unit)",
+      "about one light-year",
+      "about a thousand light-years"
     ],
     "correctChoice": "D",
-    "answer": "bout one light-year",
+    "answer": "about one light-year",
     "image": null,
     "hasImage": false,
     "imageDescription": null
@@ -27794,7 +27794,7 @@ window.ASTR200_QUIZ_DATA = [
     "topicNum": 18,
     "topicName": "Surveying Sun and Stars",
     "type": "mcq",
-    "question": "Star A and Star B have measured stellar parallax stellar mass (Men) of 0.75 arc second and 0.10 are second, respectively. Which star is closer?",
+    "question": "Star A and Star B have measured stellar parallax of 0.75 arc second and 0.10 arc second, respectively. Which star is closer?",
     "choices": [
       "Star A is closer.",
       "Star B is closer.",
@@ -27871,9 +27871,9 @@ window.ASTR200_QUIZ_DATA = [
     "topicNum": 18,
     "topicName": "Surveying Sun and Stars",
     "type": "mcq",
-    "question": "Which of the following statements about spectral types of stars is true? <a",
+    "question": "Which of the following statements about spectral types of stars is true?",
     "choices": [
-      "The spectral type of a star can be used to determine its surface temperature. ;",
+      "The spectral type of a star can be used to determine its surface temperature.",
       "The spectral type of a star can be used to determine its color.",
       "A star with spectral type A is cooler than a star with spectral type B.",
       "A star with spectral type F2 is hotter than a star with spectral type F3.",
@@ -27922,12 +27922,12 @@ window.ASTR200_QUIZ_DATA = [
     "topicNum": 18,
     "topicName": "Surveying Sun and Stars",
     "type": "mcq",
-    "question": "What is the minimum possible mass for a star? Breet)",
+    "question": "What is the minimum possible mass for a star?",
     "choices": [
       "0.01 solar masses",
       "0.008 solar masses",
       "0.08 solar masses",
-      "0.1 solar masses « [pene"
+      "0.1 solar masses"
     ],
     "correctChoice": "C",
     "answer": "0.08 solar masses",
@@ -28045,8 +28045,8 @@ window.ASTR200_QUIZ_DATA = [
     ],
     "frequency": 1,
     "epoch": "M3",
-    "topicNum": 20,
-    "topicName": "Extrasolar Planetary Systems",
+    "topicNum": 19,
+    "topicName": "Life Cycle of Stars",
     "type": "mcq",
     "question": "In the H-R diagram shown on the right, which main sequence star has the shortest lifetime?",
     "choices": [
@@ -28070,8 +28070,8 @@ window.ASTR200_QUIZ_DATA = [
     ],
     "frequency": 1,
     "epoch": "M3",
-    "topicNum": 24,
-    "topicName": "Aliens",
+    "topicNum": 18,
+    "topicName": "Surveying Sun and Stars",
     "type": "mcq",
     "question": "In the H-R diagram shown on the right, which main sequence star has a smaller radius than the Sun?",
     "choices": [
@@ -28150,7 +28150,7 @@ window.ASTR200_QUIZ_DATA = [
     "question": "The main problem with early attempts to listen for radio signals from space was",
     "choices": [
       "that they were conducted at relatively low frequencies which have problems penetrating the Earth's upper atmosphere",
-      "uilding receivers sensitive enough to detect extraterrestrial signals",
+      "building receivers sensitive enough to detect extraterrestrial signals",
       "that they were conducted at relatively high frequencies which have problems penetrating the Earth's lower atmosphere",
       "interference by radio waves from the Sun"
     ],
@@ -28223,9 +28223,9 @@ window.ASTR200_QUIZ_DATA = [
     "type": "mcq",
     "question": "Any reply to a detected SETI signal should",
     "choices": [
-      "e decided upon by the group of scientists who first detected the signal",
-      "e decided upon by the government of the country who first detected the signal",
-      "e sent immediately as a signal is received",
+      "be decided upon by the group of scientists who first detected the signal",
+      "be decided upon by the government of the country who first detected the signal",
+      "be sent immediately as a signal is received",
       "represent a consensus of the Earth's population"
     ],
     "correctChoice": "D",
@@ -28247,7 +28247,7 @@ window.ASTR200_QUIZ_DATA = [
     "type": "mcq",
     "question": "In 1974 we transmitted a message toward the globular cluster M13 which is 21,000 ly away. What is one reason that this object was probably not ideal for sending a message to?",
     "choices": [
-      "itis so far away that we will probably have stopped communicating before we receive and return signal",
+      "it is so far away that we will probably have stopped communicating before we receive and return signal",
       "globular clusters contain, old, low mass stars with fewer heavy elements and hence are not ideal places for life",
       "globular clusters contain young, high mass stars with insufficiently long main sequence lifetimes and hence are unsuitable places for life",
       "the message will be absorbed by interstellar dust before it reaches the cluster"
@@ -28272,7 +28272,7 @@ window.ASTR200_QUIZ_DATA = [
     "question": "In order to get large payloads into space using chemical rockets,",
     "choices": [
       "multiple rocket stages are necessary",
-      "xtremely large single-staged rockets must be used",
+      "extremely large single-staged rockets must be used",
       "very lightweight rockets",
       "rockets must be launched from the tops of tall mountains"
     ],
@@ -29503,8 +29503,8 @@ window.ASTR200_QUIZ_DATA = [
     ],
     "frequency": 1,
     "epoch": "M3",
-    "topicNum": 16,
-    "topicName": "Mars",
+    "topicNum": 21,
+    "topicName": "Habitability Evolution",
     "type": "mcq",
     "question": "What is the main factor that drives Darwinian evolution?",
     "choices": [
@@ -29889,7 +29889,7 @@ window.ASTR200_QUIZ_DATA = [
     "question": "The stellar spectral sequence, in order of decreasing temperature, is",
     "choices": [
       "OBAFGKM.",
-      "OF BAGKM.",
+      "OFBAGKM.",
       "OBAGFKM.",
       "ABFGKMO.",
       "BAGFKMO."
@@ -30928,8 +30928,8 @@ window.ASTR200_QUIZ_DATA = [
     ],
     "frequency": 1,
     "epoch": "M3",
-    "topicNum": 18,
-    "topicName": "Surveying Stars (HR diagram)",
+    "topicNum": 16,
+    "topicName": "Mars",
     "type": "mcq",
     "question": "The multiple exposure photograph on the right shows the apparent retrograde motion of Mars. To make this picture, the photographer needed to combine individual photos of Mars taken over a period of:",
     "choices": [
@@ -31881,12 +31881,12 @@ window.ASTR200_QUIZ_DATA = [
     "question": "Why does the Sun brighten with time?",
     "choices": [
       "as time progresses, helium starts to fuse in the core, in addition to hydrogen, leading to an increase in brightness",
-      "as hydrogen is converted into helium in the core, the number of hydrogen nuclei decrease, decreasing the fusion rate. To maintain the balance with gravity pressing inward, the core compensates by shrinking and heating up",
+      "as hydrogen is converted into helium in the core, the number of hydrogen nuclei decreases, decreasing the fusion rate. To maintain the balance with gravity pressing inward, the core compensates by shrinking and heating up",
       "as time progresses, more and more heat is trapped inside the core, leading to an increase in brightness",
       "as hydrogen is converted into helium in the core, the number of hydrogen nuclei decreases, decreasing the fusion rate. To maintain the balance with gravity pressing inward, the core compensates by expanding and cooling"
     ],
     "correctChoice": "B",
-    "answer": "as hydrogen is converted into helium in the core, the number of hydrogen nuclei decrease, decreasing the fusion rate. To maintain the balance with gravity pressing inward, the core compensates by shrinking and heating up",
+    "answer": "as hydrogen is converted into helium in the core, the number of hydrogen nuclei decreases, decreasing the fusion rate. To maintain the balance with gravity pressing inward, the core compensates by shrinking and heating up",
     "image": null,
     "hasImage": false,
     "imageDescription": null
